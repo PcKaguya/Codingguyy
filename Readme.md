@@ -313,3 +313,9 @@ The investigation has successfully:
     
 
 **Final Assessment:** Actor has significantly reduced operational footprint following investigation. All major infrastructure is non-functional or dismantled. Consistent pattern of fraudulent service deployment documented. Case ready for closure with periodic monitoring.
+
+
+
+# Disclaimer
+
+All files and screenshots in this repository are collected for research, documentation, and educational purposes only. No ownership of third-party content is claimed, and these materials are not intended for malicious use.
